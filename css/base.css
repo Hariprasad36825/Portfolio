@@ -9,7 +9,7 @@
 
 .flex-wrap {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: wrap !important;
 }
 .fw-rev {
   flex-wrap: wrap-reverse !important;
@@ -34,4 +34,10 @@
 
 .mb-0 {
   margin-bottom: 0;
+}
+
+
+a{
+  text-decoration: none;
+  color: inherit;
 }
