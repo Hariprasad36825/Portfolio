@@ -450,12 +450,12 @@
      */
     function moveSectionUp() {
       var prev = prevUntil($(SECTION_ACTIVE_SEL)[0], SECTION_SEL);
-
+      
       //looping to the bottom if there's no more sections above
       if (!prev && (options.loopTop || options.continuousVertical)) {
         prev = last($(SECTION_SEL));
       }
-
+      addanimation(prev);
       if (prev != null) {
         scrollPage(prev, null, true);
       }
@@ -464,6 +464,38 @@
     /**
      * Moves the page down one section.
      */
+
+    function addanimation(next){
+      
+
+      try{
+        var tmp = next.childNodes[0].childNodes[1].childNodes[1].classList.value
+
+        if(tmp in {'image':"", 'content':"", 'content animateL':""}){
+          var nodes = next.childNodes[0].childNodes[1].childNodes[1].children;
+          for(var i=0; i<nodes.length; i++){
+            nodes[i].classList.add('animateL')
+          }
+          var nodes1 = next.childNodes[0].childNodes[1].childNodes[3].children;
+          for(var i=0; i<nodes1.length; i++){
+            nodes1[i].classList.add('animateR')
+          }
+          setTimeout(() => {
+            for(var i=0; i<nodes.length; i++){
+              nodes[i].classList.remove('animateL')
+            }
+            for(var i=0; i<nodes1.length; i++){
+              nodes1[i].classList.remove('animateR')
+            }
+          }, 1000)
+        }
+        
+      } 
+      catch(e){
+        console.log(e)
+      }
+    }
+
     function moveSectionDown() {
       var next = nextUntil($(SECTION_ACTIVE_SEL)[0], SECTION_SEL);
 
@@ -471,6 +503,7 @@
       if (!next && (options.loopBottom || options.continuousVertical)) {
         next = $(SECTION_SEL)[0];
       }
+      addanimation(next);
 
       if (next != null) {
         scrollPage(next, null, false);
@@ -1338,6 +1371,7 @@
 
         //setting the visible section as active when manually scrolling
         //executing only once the first time we reach the section
+
         if (!hasClass(currentSection, ACTIVE)) {
           isScrolling = true;
           var leavingSection = $(SECTION_ACTIVE_SEL)[0];
@@ -1361,6 +1395,7 @@
             slideAnchorLink = activeSlide.getAttribute("data-anchor");
             slideIndex = index(activeSlide);
           }
+            console.log(currentSection );
 
           if (canScroll) {
             addClass(currentSection, ACTIVE);
@@ -1483,11 +1518,13 @@
       }
 
       var scrollSection = type === "down" ? moveSectionDown : moveSectionUp;
+      
 
       if (options.scrollOverflow) {
         var scrollable = options.scrollOverflowHandler.scrollable(
           $(SECTION_ACTIVE_SEL)[0]
         );
+        
         var check = type === "down" ? "bottom" : "top";
 
         if (scrollable != null) {

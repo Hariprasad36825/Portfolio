@@ -114,11 +114,43 @@ body::-webkit-scrollbar {
 
 .center-div .about .content .name {
   /* margin: auto; */
+  
   padding: 0rem 2rem;
   margin: 0;
   font-size: 4em;
   font-weight: 500;
   letter-spacing: 1.5px;
+}
+
+.animateL{
+  animation: transform 1s;
+}
+
+.animateR{
+  animation: transform1 1s;
+}
+.image .animateL{
+  animation: transform2 1s;
+}
+.image .animateR{
+  animation: transform3 1s;
+}
+
+@keyframes transform{
+  from {transform: translateX(-90%) translateZ(0px);}
+  to{transform: translateX(0%) translateZ(0px);}
+}
+@keyframes transform1{
+  from {transform: translateX(+90%) translateZ(0px);}
+  to{transform: translateX(0%) translateZ(0px);}
+}
+@keyframes transform2{
+  from {transform: scale(0.45) translateX(-90%) translateZ(0px);}
+  to{transform: scale(1) translateX(0%) translateZ(0px);}
+}
+@keyframes transform3{
+  from {transform: scale(0.45) translateX(+90%) translateZ(0px);}
+  to{transform: scale(1) translateX(0%) translateZ(0px);}
 }
 
 @media only screen and (max-width: 850px) {
@@ -416,6 +448,7 @@ body::-webkit-scrollbar {
   font-weight: 100;
   letter-spacing: 1.1px;
   color: #afafaf;
+  margin: .7rem;
 }
 
 @media screen and (max-width: 600px) {
@@ -436,14 +469,15 @@ body::-webkit-scrollbar {
   }
 }
 
-@media screen and (max-width: 600px) {
+/* @media screen and (max-width: 600px) {
   .center-div .about.education .content {
     height: 30%;
   }
-}
+} */
 
 .education {
   display: flex;
+  width: 100%;
   flex-direction: column;
   flex-wrap: wrap;
   align-content: center;
@@ -452,8 +486,22 @@ body::-webkit-scrollbar {
 
 .educontent {
   width: 50%;
-  min-width: 300px;
-  max-width: 500px;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+.education .content{
+  width: 50%;
+}
+
+@media screen and (max-width: 600px) {
+  
+  .education .content{
+    height: 30% !important;
+  }
+  .educontent {
+    height: 70% !important;
+  }
 }
 
 .education p {
@@ -506,7 +554,7 @@ body::-webkit-scrollbar {
 .footer {
   /* position: fixed; */
   /* z-index: -1; */
-  height: 150px;
+  height: 200px;
   width: 100%;
   background-color: #000f20;
   display: flex;
