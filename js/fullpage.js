@@ -1324,7 +1324,7 @@
     //when scrolling...
     function scrollHandler() {
       var currentSection;
-      console.log(isResizing);
+      // console.log(isResizing);
       if (isResizing) {
         return;
       }
@@ -1395,7 +1395,7 @@
             slideAnchorLink = activeSlide.getAttribute("data-anchor");
             slideIndex = index(activeSlide);
           }
-            console.log(currentSection );
+            // console.log(currentSection );
 
           if (canScroll) {
             addClass(currentSection, ACTIVE);

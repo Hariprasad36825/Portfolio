@@ -8,7 +8,7 @@ window.onload = function () {
 
   setTimeout(() => {
     var nodes = document.getElementById('about').childNodes[1].children;
-    console.log(nodes)
+    // console.log(nodes)
     for(var i=0; i<nodes.length; i++){
       nodes[i].classList.remove('animateL')
     }
