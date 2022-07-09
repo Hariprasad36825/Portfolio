@@ -27,6 +27,7 @@ body::-webkit-scrollbar {
   justify-content: space-between;
   /* position: fixed; */
   background-color: #001933;
+  align-items: center;
 }
 
 .navbar .name {
